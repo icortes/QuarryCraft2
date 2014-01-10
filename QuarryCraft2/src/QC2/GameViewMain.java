@@ -4,7 +4,7 @@ import jgame.GContainer;
 
 public class GameViewMain extends GContainer {
 	public GameViewMain() {
-		setSize(1200, 800);
+		setSize(1400, 600);
 	}
 
 }

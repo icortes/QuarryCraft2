@@ -1,4 +1,4 @@
-package QC2;
+package QC2;	
 
 import QC2.GameViewMain;
 import java.awt.Color;
