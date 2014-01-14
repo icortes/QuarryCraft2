@@ -13,9 +13,6 @@ public class GameView extends GContainer{
 	GSprite bg1 = ImageCache.getSprite("qc2_bg1.png");
 	bg1.setAnchorCenter(); 
 	 addAtCenter(bg1);
- for (int i = 0; i<=20;i++){
-		randomArray.get(i);
-	 }
 	}
 	 public static ArrayList<Integer> RandomArray(int n)   {
 		 
