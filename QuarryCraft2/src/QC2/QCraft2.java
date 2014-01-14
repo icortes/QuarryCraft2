@@ -23,7 +23,10 @@ public class QCraft2 extends Game {
 		GRootContainer root = new GRootContainer(Color.BLACK);
 		setRootContainer(root);
 
-		GameViewMain gameView = new GameViewMain();
-		root.addView(View.GAMEMAIN, gameView);
+		GameViewMain gameViewMain = new GameViewMain();
+		root.addView(View.GAMEMAIN, gameViewMain);
+		
+		GameView game = new GameView();
+		root.addView(View.GAME, game);
 	}
 }
