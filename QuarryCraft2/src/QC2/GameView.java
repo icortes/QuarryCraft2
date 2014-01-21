@@ -4,6 +4,7 @@ import soil.SoilBlock1;
 import soil.SoilBlock2;
 import soil.TopSoil1;
 import soil.TopSoil2;
+import soil.nothing;
 import jgame.GContainer;
 import jgame.GSprite;
 import jgame.ImageCache;
@@ -15,7 +16,7 @@ public class GameView extends GContainer{
 	bg1.setAnchorCenter(); 
 	 addAtCenter(bg1);
 	 for (int z = 1025; z>=0;z-=50){
-		 int blockPickTop = (int) (Math.random() * 2);
+		 int blockPickTop = (int) (Math.random() * 3);
 			Soil t = null;
 			switch (blockPickTop) {
 			case 0:
@@ -24,6 +25,9 @@ public class GameView extends GContainer{
 
 			case 1:
 				t = new TopSoil2();
+				break;
+			case 2:
+				t = new nothing();
 				break;
 
 			}
@@ -43,6 +47,8 @@ public class GameView extends GContainer{
 				case 1:
 					e = new SoilBlock2();
 					break;
+				
+				
 
 				}
 
