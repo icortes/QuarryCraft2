@@ -108,8 +108,8 @@ public class PlatformController implements Controller {
 
 		// Check each key.
 		for (int key : keys) {
-			/*
-			 * TODO insert code here to modify the variables "horizontal" and
+			
+			 /* TODO insert code here to modify the variables "horizontal" and
 			 * "jump" appropriately:
 			 * 
 			 * "horizontal" should be 1 if the right key is pressed, -1 if the
