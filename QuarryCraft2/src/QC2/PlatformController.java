@@ -108,6 +108,28 @@ public class PlatformController implements Controller {
 
 		// Check each key.
 		for (int key : keys) {
+			switch (key){
+			case('a'):
+				horizontal = -1;
+				break;
+			case('d'):
+				horizontal = 1;
+				break;
+			case('w'):
+				jump = true;
+				break;
+			case(' '):
+				jump = true;
+				break;
+			case('s'):
+				jump = false;
+				break;
+			default:
+					horizontal = 0;
+					jump = false;
+					break;
+				
+			}
 			
 			 /* TODO insert code here to modify the variables "horizontal" and
 			 * "jump" appropriately:
