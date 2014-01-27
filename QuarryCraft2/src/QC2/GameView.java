@@ -20,7 +20,7 @@ public class GameView extends GContainer{
 	 
 	 Character hero = new Character();
 		add(hero);
-		hero.setLocation(500, 480);
+		hero.setLocation(500, 200);
 		
 		
 	 for (int z = 1025; z>=0;z-=50){

@@ -171,7 +171,7 @@ public class PlatformController implements Controller {
 		// TODO set the horizontal velocity to the desired velocity
 		// remember that "horizontal" is -1/0/1 for left/stop/right
 		// and that maxSpeed contains the horizontal speed
-		maxSpeed = velocity.getX();
+		double speed = getMaxSpeed();
 		// Move the object in the desired manner
 		target.setLocation(target.getX() + velocity.getX(), target.getY()+ velocity.getY());
 	}
