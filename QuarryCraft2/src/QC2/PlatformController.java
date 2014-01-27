@@ -145,31 +145,35 @@ public class PlatformController implements Controller {
 			 * controlScheme.jump)
 			 */
 		}
-
+		
+			
 		// TODO insert code to check if the target is touching solid ground
 		// hint: check if the target is colliding with any SolidGround object
 		// the method context.getInstancesOfClass will be helpful
 		boolean onSolidGround = false;
-
 		if (onSolidGround) {
 			if (jump) {
 				// TODO set the vertical velocity to the jumping speed, upward
+				maxJump = 1;
+				
 			} else {
 				// TODO stop vertical movement
+				maxJump = 0;
 			}
 		} else {
 			// TODO increase the downward vertical velocity by "gravity"
 			// limit velocity to the height of the object (to avoid passing
 			// through stuff)
+			gravity = -1;
+	
 		}
 
 		// TODO set the horizontal velocity to the desired velocity
 		// remember that "horizontal" is -1/0/1 for left/stop/right
 		// and that maxSpeed contains the horizontal speed
-
+		maxSpeed = velocity.getX();
 		// Move the object in the desired manner
-		target.setLocation(target.getX() + velocity.getX(), target.getY()
-				+ velocity.getY());
+		target.setLocation(target.getX() + velocity.getX(), target.getY()+ velocity.getY());
 	}
 
 	/**

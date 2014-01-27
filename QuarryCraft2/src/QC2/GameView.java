@@ -1,4 +1,5 @@
 package QC2;
+import QC2.Character;
 import soil.Soil;
 import soil.SoilBlock1;
 import soil.SoilBlock2;
@@ -15,6 +16,13 @@ public class GameView extends GContainer{
 	GSprite bg1 = ImageCache.getSprite("qc2_bg1.png");
 	bg1.setAnchorCenter(); 
 	 addAtCenter(bg1);
+	 
+	 
+	 Character hero = new Character();
+		add(hero);
+		hero.setLocation(500, 480);
+		
+		
 	 for (int z = 1025; z>=0;z-=50){
 		 int blockPickTop = (int) (Math.random() * 3);
 			Soil t = null;
