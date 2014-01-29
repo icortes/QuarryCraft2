@@ -148,10 +148,10 @@ public class PlatformController implements Controller {
 		if (onSolidGround) {
 			if (jump) {
 				// TODO set the vertical velocity to the jumping speed, upward	
-					//sets velocity
+					//sets vertical velocity
 			} else {
 				// TODO stop vertical movement
-				//if it is not moving then velocity = 0	
+				//if it is not moving then vertical velocity = 0	
 			}
 		} else {
 			// TODO increase the downward vertical velocity by "gravity"
