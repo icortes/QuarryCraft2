@@ -16,7 +16,6 @@ import jgame.controller.Controller;
  * 
  */
 public class PlatformController implements Controller {
-
 	/**
 	 * The default gravitational acceleration, in px/frame<sup>2</sup>.
 	 */
@@ -107,29 +106,19 @@ public class PlatformController implements Controller {
 		boolean jump = false;
 
 		// Check each key.
-		for (int key : keys) {
-			switch (key){
-			case('a'):
-				horizontal = -1;
-				break;
-			case('d'):
-				horizontal = 1;
-				break;
-			case('w'):
-				jump = true;
-				break;
-			case(' '):
-				jump = true;
-				break;
-			case('s'):
-				jump = false;
-				break;
-			default:
-					horizontal = 0;
-					jump = false;
-					break;
-				
-			}
+		
+	for (int key : keys) {
+		
+		if (key == controlScheme.lt){
+			horizontal = -1;
+		}else if (key == controlScheme.rt){
+			horizontal = 1;
+		}else if (key == controlScheme.jump){
+			jump = true;
+		}else{
+			horizontal = 0;
+			jump = false;
+		}
 			
 			 /* TODO insert code here to modify the variables "horizontal" and
 			 * "jump" appropriately:
@@ -146,32 +135,25 @@ public class PlatformController implements Controller {
 			 */
 		}
 		
-			
 		// TODO insert code to check if the target is touching solid ground
 		// hint: check if the target is colliding with any SolidGround object
 		// the method context.getInstancesOfClass will be helpful
 		boolean onSolidGround = false;
 		if (onSolidGround) {
 			if (jump) {
-				// TODO set the vertical velocity to the jumping speed, upward
-				maxJump = 1;
-				
+				// TODO set the vertical velocity to the jumping speed, upward				
 			} else {
 				// TODO stop vertical movement
-				maxJump = 0;
 			}
 		} else {
 			// TODO increase the downward vertical velocity by "gravity"
 			// limit velocity to the height of the object (to avoid passing
 			// through stuff)
-			gravity = -1;
-	
 		}
 
 		// TODO set the horizontal velocity to the desired velocity
 		// remember that "horizontal" is -1/0/1 for left/stop/right
 		// and that maxSpeed contains the horizontal speed
-		double speed = getMaxSpeed();
 		// Move the object in the desired manner
 		target.setLocation(target.getX() + velocity.getX(), target.getY()+ velocity.getY());
 	}
