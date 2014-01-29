@@ -138,23 +138,33 @@ public class PlatformController implements Controller {
 		// TODO insert code to check if the target is touching solid ground
 		// hint: check if the target is colliding with any SolidGround object
 		// the method context.getInstancesOfClass will be helpful
+	
+	/*
+	 * should compare the character class to the Soil class
+	 * and get true if character is touching soil
+	 * and false if not touching soil
+	 */
 		boolean onSolidGround = false;
 		if (onSolidGround) {
 			if (jump) {
-				// TODO set the vertical velocity to the jumping speed, upward				
+				// TODO set the vertical velocity to the jumping speed, upward	
+					//sets velocity
 			} else {
 				// TODO stop vertical movement
+				//if it is not moving then velocity = 0	
 			}
 		} else {
 			// TODO increase the downward vertical velocity by "gravity"
 			// limit velocity to the height of the object (to avoid passing
-			// through stuff)
+			// through stuff)\
+				//if in the "air" should enact gravity so character falls
 		}
 
 		// TODO set the horizontal velocity to the desired velocity
 		// remember that "horizontal" is -1/0/1 for left/stop/right
 		// and that maxSpeed contains the horizontal speed
 		// Move the object in the desired manner
+			//creating maxspeed of character when going left, right, or not moving
 		target.setLocation(target.getX() + velocity.getX(), target.getY()+ velocity.getY());
 	}
 
@@ -181,7 +191,7 @@ public class PlatformController implements Controller {
 	 * 
 	 * @param maxJump
 	 *            the maximum jump, in px/frame
-	 */
+	 */	
 	public void setMaxJump(double maxJump) {
 		this.maxJump = maxJump;
 	}
