@@ -17,7 +17,7 @@ public class Character extends GSprite{
 	public Character(){
 		super(ImageCache.forClass(QCraft2.class).get("qc2_soiltop.png"));
 		
-		PlatformController klc = new PlatformController(PlatformControlScheme.WASD, 1, 1);
+		PlatformController klc = new PlatformController(PlatformControlScheme.WASD, 1, 1, 1);
 		addController(klc);
 		
 		HitTestListener htl = new HitTestListener(Soil.class) {
@@ -25,8 +25,8 @@ public class Character extends GSprite{
 			@Override
 			public void invoke(GObject target, Context context) {
 				List<Soil> ground = context.hitTestClass(Soil.class);
-				for(Soil e : ground)
-					e.setonSolidGround(true);
+				for(Soil e : ground);
+					//e.setonSolidGround(true);
 			
  
 			}

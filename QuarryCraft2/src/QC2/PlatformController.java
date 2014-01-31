@@ -149,15 +149,18 @@ public class PlatformController implements Controller {
 			if (jump) {
 				// TODO set the vertical velocity to the jumping speed, upward	
 					//sets vertical velocity
+				maxJump = velocity.getY();
 			} else {
 				// TODO stop vertical movement
-				//if it is not moving then vertical velocity = 0	
+					//if it is not moving then vertical velocity = 0
+				maxJump = 0;
 			}
 		} else {
 			// TODO increase the downward vertical velocity by "gravity"
 			// limit velocity to the height of the object (to avoid passing
 			// through stuff)\
 				//if in the "air" should enact gravity so character falls
+			maxJump = gravity; 
 		}
 
 		// TODO set the horizontal velocity to the desired velocity
@@ -165,6 +168,7 @@ public class PlatformController implements Controller {
 		// and that maxSpeed contains the horizontal speed
 		// Move the object in the desired manner
 			//creating maxspeed of character when going left, right, or not moving
+		maxSpeed = 1;
 		target.setLocation(target.getX() + velocity.getX(), target.getY()+ velocity.getY());
 	}
 
