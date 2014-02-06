@@ -64,7 +64,8 @@ public class PlatformController implements Controller {
 	 */
 	public PlatformController(PlatformControlScheme controlScheme,
 			double maxSpeed, double maxJump) {
-		this(controlScheme, maxSpeed, maxJump, DEFAULT_GRAVITY);
+		this(controlScheme, maxSpeed, maxJump, DEFAULT_GRAVITY); // ++++++++++++++
+																	// ??????????????????????????????
 	}
 
 	/**
@@ -92,15 +93,18 @@ public class PlatformController implements Controller {
 	@Override
 	public void controlObject(GObject target, Context context) {
 		// Ensure that this is locked to one object
-		if (object == null) {
-			target = object;
+		if (object == null) { 
+								
+			object = target;												// Object:GameObject  ???????????????
 		} else if (object != target) {
 			throw new IllegalArgumentException(
 					"This PlatformController already belongs to " + object);
 		}
 
 		// Get a list of all keys pressed.
-		Set<Integer> keys = context.getKeyCodesPressed();
+		Set<Integer> keys = context.getKeyCodesPressed(); // ????????????????????????
+															// Why a set and not
+															// a list
 
 		int horizontal = 0;
 		boolean jump = false;
@@ -121,8 +125,8 @@ public class PlatformController implements Controller {
 			}
 
 			/*
-			 *  insert code here to modify the variables "horizontal" and
-			 * "jump" appropriately:
+			 * insert code here to modify the variables "horizontal" and "jump"
+			 * appropriately:
 			 * 
 			 * "horizontal" should be 1 if the right key is pressed, -1 if the
 			 * left key is pressed, or 0 if neither or both are pressed
@@ -145,22 +149,26 @@ public class PlatformController implements Controller {
 		 * character is touching soil and false if not touching soil
 		 */
 		boolean onSolidGround = false;
-		if (onSolidGround) {
+		if (!onSolidGround) {
 			if (jump) {
 				// TODO set the vertical velocity to the jumping speed, upward
 				// sets vertical velocity
-				maxJump = 1;
+
+				 gravity = -3;
+
 			} else {
 				// TODO stop vertical movement
 				// if it is not moving then vertical velocity = 0
-				maxJump = 0;
+				// vy = 0
+				gravity = 0;
 			}
 		} else {
 			// TODO increase the downward vertical velocity by "gravity"
 			// limit velocity to the height of the object (to avoid passing
 			// through stuff)\
 			// if in the "air" should enact gravity so character falls
-			maxJump = gravity;
+			// vy += gravity;
+			gravity += 0.03;
 		}
 
 		// TODO set the horizontal velocity to the desired velocity
@@ -168,9 +176,10 @@ public class PlatformController implements Controller {
 		// and that maxSpeed contains the horizontal speed
 		// Move the object in the desired manner
 		// creating maxspeed of character when going left, right, or not moving
-		 maxSpeed = horizontal; 
-		 
-		target.setLocation(target.getX() + velocity.getX(), target.getY()+ velocity.getY());
+		// vx = horizontal;
+		horizontal = 2;
+		
+		target.setLocation(target.getX() + velocity.getX(), target.getY() + velocity.getY());
 	}
 
 	/**
