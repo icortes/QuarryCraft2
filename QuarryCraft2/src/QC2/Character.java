@@ -19,7 +19,7 @@ public class Character extends GSprite {
 		super(ImageCache.forClass(QCraft2.class).get("qc2_soiltop.png"));
 
 		PlatformController klc = new PlatformController(
-				PlatformControlScheme.WASD, 10, 10, 2);
+				PlatformControlScheme.WASD, -10, -10, 3);
 		addController(klc);
 
 		
