@@ -106,21 +106,22 @@ public class PlatformController implements Controller {
 		boolean jump = false;
 
 		// Check each key.
-		
-	for (int key : keys) {
-		
-		if (key == controlScheme.lt){
-			horizontal = -1;
-		}else if (key == controlScheme.rt){
-			horizontal = 1;
-		}else if (key == controlScheme.jump){
-			jump = true;
-		}else{
-			horizontal = 0;
-			jump = false;
-		}
-			
-			 /* TODO insert code here to modify the variables "horizontal" and
+
+		for (int key : keys) {
+
+			if (key == controlScheme.lt) {
+				horizontal = -1;
+			} else if (key == controlScheme.rt) {
+				horizontal = 1;
+			} else if (key == controlScheme.jump) {
+				jump = true;
+			} else {
+				horizontal = 0;
+				jump = false;
+			}
+
+			/*
+			 *  insert code here to modify the variables "horizontal" and
 			 * "jump" appropriately:
 			 * 
 			 * "horizontal" should be 1 if the right key is pressed, -1 if the
@@ -134,41 +135,41 @@ public class PlatformController implements Controller {
 			 * controlScheme.jump)
 			 */
 		}
-		
+
 		// TODO insert code to check if the target is touching solid ground
 		// hint: check if the target is colliding with any SolidGround object
 		// the method context.getInstancesOfClass will be helpful
-	
-	/*
-	 * should compare the character class to the Soil class
-	 * and get true if character is touching soil
-	 * and false if not touching soil
-	 */
+
+		/*
+		 * should compare the character class to the Soil class and get true if
+		 * character is touching soil and false if not touching soil
+		 */
 		boolean onSolidGround = false;
 		if (onSolidGround) {
 			if (jump) {
-				// TODO set the vertical velocity to the jumping speed, upward	
-					//sets vertical velocity
-				maxJump = velocity.getY();
+				// TODO set the vertical velocity to the jumping speed, upward
+				// sets vertical velocity
+				maxJump = 1;
 			} else {
 				// TODO stop vertical movement
-					//if it is not moving then vertical velocity = 0
+				// if it is not moving then vertical velocity = 0
 				maxJump = 0;
 			}
 		} else {
 			// TODO increase the downward vertical velocity by "gravity"
 			// limit velocity to the height of the object (to avoid passing
 			// through stuff)\
-				//if in the "air" should enact gravity so character falls
-			maxJump = gravity; 
+			// if in the "air" should enact gravity so character falls
+			maxJump = gravity;
 		}
 
 		// TODO set the horizontal velocity to the desired velocity
 		// remember that "horizontal" is -1/0/1 for left/stop/right
 		// and that maxSpeed contains the horizontal speed
 		// Move the object in the desired manner
-			//creating maxspeed of character when going left, right, or not moving
-		maxSpeed = 1;
+		// creating maxspeed of character when going left, right, or not moving
+		 maxSpeed = horizontal; 
+		 
 		target.setLocation(target.getX() + velocity.getX(), target.getY()+ velocity.getY());
 	}
 
@@ -195,7 +196,7 @@ public class PlatformController implements Controller {
 	 * 
 	 * @param maxJump
 	 *            the maximum jump, in px/frame
-	 */	
+	 */
 	public void setMaxJump(double maxJump) {
 		this.maxJump = maxJump;
 	}
