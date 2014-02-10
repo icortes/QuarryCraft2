@@ -18,13 +18,11 @@ import jgame.listener.GlobalClickListener;
 public class GameView extends GContainer {
 	public GameView() {
 		setSize(1000, 600);
-		GSprite bg1 = ImageCache.getSprite("qc2_bg1.png");
+		GSprite bg1 = ImageCache.getSprite("tempBack.png");
 		bg1.setAnchorCenter();
 		addAtCenter(bg1);
 
-		Character hero = new Character();
-		add(hero);
-		hero.setLocation(500, 200);
+		
 		
 		bedRock unbreakable = new bedRock();
 		add(unbreakable);
@@ -48,6 +46,7 @@ public class GameView extends GContainer {
 			}
 
 			addAt(t, z, 325);
+			
 		}
 
 		for (int l = 375; l <= 600; l += 50) {
@@ -72,6 +71,9 @@ public class GameView extends GContainer {
 			}
 
 		}
+		Character hero = new Character();
+		add(hero);
+		hero.setLocation(500, 200);
 
 	}
 }

@@ -17,7 +17,7 @@ public class GameViewMain extends GContainer {
 	public GameViewMain() {
 		setSize(1000, 600);
 		this.setBackgroundColor(Color.PINK);
-		GSprite bg1 = ImageCache.getSprite("qc2_bg1.png");
+		GSprite bg1 = ImageCache.getSprite("tempBack.png");
 		bg1.setAnchorCenter();
 		addAtCenter(bg1);
 
