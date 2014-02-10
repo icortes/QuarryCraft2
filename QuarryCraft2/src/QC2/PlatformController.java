@@ -1,6 +1,7 @@
 package QC2;
 
 import java.awt.geom.Point2D;
+import java.util.List;
 import java.util.Set;
 
 import jgame.Context;
@@ -32,10 +33,8 @@ public class PlatformController implements Controller {
 	private GObject object;
 
 	/**
-	 * The current velocity of the target object.
+	 * These two variables describe the current velocity of the player.
 	 */
-	private Point2D velocity = new Point2D.Double();
-
 	private double vx, vy;
 
 	/**
@@ -86,7 +85,7 @@ public class PlatformController implements Controller {
 			double maxSpeed, double maxJump, double gravity) {
 		super();
 		this.controlScheme = controlScheme;
-		this.velocity = new Point2D.Double();
+		vx = vy = 0;
 		this.maxSpeed = maxSpeed;
 		this.maxJump = maxJump;
 		this.gravity = gravity;
@@ -96,8 +95,7 @@ public class PlatformController implements Controller {
 	public void controlObject(GObject target, Context context) {
 		// Ensure that this is locked to one object
 		if (object == null) {
-
-			object = target; // Object:GameObject ???????????????
+			object = target;
 		} else if (object != target) {
 			throw new IllegalArgumentException(
 					"This PlatformController already belongs to " + object);
@@ -110,34 +108,14 @@ public class PlatformController implements Controller {
 		boolean jump = false;
 
 		// Check each key.
-
 		for (int key : keys) {
-
 			if (key == controlScheme.lt) {
-				horizontal = -1;
-				System.out.println(key + "key pressed");
+				horizontal += 1;
 			} else if (key == controlScheme.rt) {
-				horizontal = 1;
-				System.out.println(key + "key pressed");
+				horizontal -= 1;
 			} else if (key == controlScheme.jump) {
 				jump = true;
-				System.out.println(key + "key pressed");
 			}
-
-			/*
-			 * insert code here to modify the variables "horizontal" and "jump"
-			 * appropriately:
-			 * 
-			 * "horizontal" should be 1 if the right key is pressed, -1 if the
-			 * left key is pressed, or 0 if neither or both are pressed
-			 * 
-			 * "jump" should be true if the jump key is pressed or false if it
-			 * is not
-			 * 
-			 * hint: compare the value of "key" to the controlScheme's
-			 * properties (controlScheme.lt, controlScheme.rt, and
-			 * controlScheme.jump)
-			 */
 		}
 
 		// TODO insert code to check if the target is touching solid ground
@@ -149,6 +127,20 @@ public class PlatformController implements Controller {
 		 * character is touching soil and false if not touching soil
 		 */
 		boolean onSolidGround = false;
+
+		List<SolidGround> solidGrounds = context
+				.getInstancesOfClass(SolidGround.class);
+
+		for (SolidGround solidGround : solidGrounds) {
+
+			GObject groundObject = (GObject) solidGround;
+			if (target.hitTest(groundObject)) {
+				onSolidGround = true;
+				break;
+			}
+
+		}
+
 		if (onSolidGround) {
 			if (jump) {
 				// TODO set the vertical velocity to the jumping speed, upward
@@ -169,7 +161,17 @@ public class PlatformController implements Controller {
 			// through stuff)\
 			// if in the "air" should enact gravity so character falls
 			// vy += gravity;
-			vy += gravity ;
+			vy += gravity;
+
+			// or: vy = Math.min(vy, target.getHeight());
+			if (vy > target.getHeight()) { 
+				vy = target.getHeight();
+			}
+			/* or:
+			if (vy + gravity < target.getHeight()) {
+				vy += gravity;
+			}*/
+			
 			System.out.println(maxJump + "vertical max jump, goin down");
 		}
 
@@ -179,7 +181,7 @@ public class PlatformController implements Controller {
 		// Move the object in the desired manner
 		// creating maxspeed of character when going left, right, or not moving
 		// vx = horizontal;
-		vx=horizontal*maxSpeed;
+		vx = horizontal * maxSpeed;
 		System.out.println(horizontal + "horizontal velocity");
 
 		target.setLocation(target.getX() + vx, target.getY() + vy);

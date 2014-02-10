@@ -33,7 +33,7 @@ public final class PlatformControlScheme {
 	public final int rt;
 
 	/**
-	 * The key code for downward movement.
+	 * The key code for jumping.
 	 */
 	public final int jump;
 
