@@ -17,7 +17,7 @@ import jgame.listener.ParentBoundsListener;
 
 public class Character extends GSprite {
 	public Character() {
-		super(ImageCache.forClass(QCraft2.class).get("qc2_soiltop.png"));
+		super(ImageCache.forClass(QCraft2.class).get("hero.png"));
 
 		PlatformController klc = new PlatformController(
 				PlatformControlScheme.WASD, -10, -20, 3);

@@ -1,5 +1,8 @@
 package quarry;
 
-public class LiquidGround {
+import jgame.GPaintable;
+
+public interface LiquidGround extends GPaintable{
 
 }
+	

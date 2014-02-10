@@ -118,6 +118,7 @@ public class PlatformController implements Controller {
 		}
 
 		boolean onSolidGround = false;
+		boolean onLiquidGround = false;
 
 		List<SolidGround> solidGrounds = context
 				.getInstancesOfClass(SolidGround.class);
@@ -131,8 +132,27 @@ public class PlatformController implements Controller {
 			}
 
 		}
+		
+		List<LiquidGround> liquidGrounds = context.getInstancesOfClass(LiquidGround.class);
 
-		if (onSolidGround) {
+		for (LiquidGround liquidGround : liquidGrounds) {
+
+			GObject groundObject = (GObject) liquidGround;
+			if (target.hitTest(groundObject)) {
+				onLiquidGround = true;
+				break;
+			}
+
+		}
+		if (onLiquidGround){
+			if (jump){
+				vy += -.5;
+			}else{
+				vy = 1;
+			}
+		}
+
+		else if (onSolidGround) {
 			if (jump) {
 
 				vy = maxJump;
