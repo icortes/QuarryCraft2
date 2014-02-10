@@ -1,7 +1,7 @@
 package soil;
 
+import quarry.QCraft2;
 import jgame.ImageCache;
-import QC2.QCraft2;
 
 public class TopSoil2 extends Soil {
 	public TopSoil2(){

@@ -1,4 +1,4 @@
-package QC2;
+package quarry;
 
 import java.awt.geom.Point2D;
 import java.util.List;
@@ -89,7 +89,7 @@ public class PlatformController implements Controller {
 		vx = vy = 0;
 		this.maxSpeed = maxSpeed;
 		this.maxJump = maxJump;
-		this.gravity = gravity;
+		this.gravity = gravity; 
 	}
 
 	@Override
@@ -101,16 +101,7 @@ public class PlatformController implements Controller {
 			throw new IllegalArgumentException(
 					"This PlatformController already belongs to " + object);
 		}
-//		ParentBoundsListener bounce = new ParentBoundsListener() {
-//
-//			@Override
-//			public void invoke(GObject target, Context context) {
-//				target.
-//			
-//				
-//			}};
-//	bounce.setValidateHorizontal(false);
-//	addListener(bounce);
+		
 		Set<Integer> keys = context.getKeyCodesPressed();
 
 		int horizontal = 0;

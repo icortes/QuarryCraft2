@@ -1,9 +1,10 @@
 package soil;
 
 import jgame.listener.LocalClickListener;
-import QC2.SolidGround;
 
 import java.awt.Image;
+
+import quarry.SolidGround;
 import jgame.Context;
 import jgame.GObject;
 import jgame.GSprite;

@@ -1,7 +1,10 @@
-package QC2;
+package quarry;
 
 import java.util.List;
 
+import quarry.PlatformControlScheme;
+import quarry.PlatformController;
+import quarry.SolidGround;
 import soil.Soil;
 import jgame.Context;
 import jgame.GObject;
@@ -11,9 +14,6 @@ import jgame.controller.ControlScheme;
 import jgame.controller.KeyboardLocationController;
 import jgame.listener.HitTestListener;
 import jgame.listener.ParentBoundsListener;
-import QC2.PlatformController;
-import QC2.PlatformControlScheme;
-import QC2.SolidGround;
 
 public class Character extends GSprite {
 	public Character() {

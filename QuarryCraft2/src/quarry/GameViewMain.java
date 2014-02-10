@@ -1,10 +1,10 @@
-package QC2;
+package quarry;
 
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
 
-import QC2.QCraft2.View;
+import quarry.QCraft2.View;
 import jgame.ButtonState;
 import jgame.Context;
 import jgame.GButton;

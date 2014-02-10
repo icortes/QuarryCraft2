@@ -1,9 +1,9 @@
-package QC2;	
+package quarry;	
 
-import QC2.GameViewMain;
 import java.awt.Color;
 
-import QC2.QCraft2;
+import quarry.GameViewMain;
+import quarry.QCraft2;
 import jgame.GRootContainer;
 import jgame.Game;
 import jgame.ImageCache;

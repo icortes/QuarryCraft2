@@ -1,11 +1,12 @@
-package QC2;
+package quarry;
 
-import QC2.Character;
+import quarry.Character;
 import soil.Soil;
 import soil.SoilBlock1;
 import soil.SoilBlock2;
 import soil.TopSoil1;
 import soil.TopSoil2;
+import soil.bedRock;
 import soil.nothing;
 import jgame.Context;
 import jgame.GContainer;
@@ -24,6 +25,10 @@ public class GameView extends GContainer {
 		Character hero = new Character();
 		add(hero);
 		hero.setLocation(500, 200);
+		
+		bedRock unbreakable = new bedRock();
+		add(unbreakable);
+		unbreakable.setLocation(500, 600);
 
 		for (int z = 1025; z >= 0; z -= 50) {
 			int blockPickTop = (int) (Math.random() * 3);
@@ -61,6 +66,8 @@ public class GameView extends GContainer {
 				}
 
 				addAt(e, i, l);
+				
+				
 
 			}
 

@@ -1,4 +1,4 @@
-package QC2;
+package quarry;
 
 import jgame.GSprite;
 import jgame.ImageCache;
