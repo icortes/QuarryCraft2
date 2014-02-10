@@ -30,14 +30,16 @@ public class PlatformController implements Controller {
 	 * The object to be controlled by this platform controller.
 	 */
 	private GObject object;
-	
+
 	/**
 	 * The current velocity of the target object.
 	 */
 	private Point2D velocity = new Point2D.Double();
 
+	private double vx, vy;
+
 	/**
-	 *  The maximum horizontal movement speed. 
+	 * The maximum horizontal movement speed.
 	 */
 	private double maxSpeed;
 
@@ -102,9 +104,7 @@ public class PlatformController implements Controller {
 		}
 
 		// Get a list of all keys pressed.
-		Set<Integer> keys = context.getKeyCodesPressed(); // ????????????????????????
-															// Why a set and not
-															// a list
+		Set<Integer> keys = context.getKeyCodesPressed();
 
 		int horizontal = 0;
 		boolean jump = false;
@@ -122,9 +122,6 @@ public class PlatformController implements Controller {
 			} else if (key == controlScheme.jump) {
 				jump = true;
 				System.out.println(key + "key pressed");
-			} else {
-				horizontal = 0;
-				jump = false;
 			}
 
 			/*
@@ -151,19 +148,19 @@ public class PlatformController implements Controller {
 		 * should compare the character class to the Soil class and get true if
 		 * character is touching soil and false if not touching soil
 		 */
-		boolean onSolidGround = true;
+		boolean onSolidGround = false;
 		if (onSolidGround) {
 			if (jump) {
 				// TODO set the vertical velocity to the jumping speed, upward
 				// sets vertical velocity
-				gravity = -3;
+				vy = maxJump;
 				System.out.println(gravity + "vertical  jump");
 
 			} else {
 				// TODO stop vertical movement
 				// if it is not moving then vertical velocity = 0
 				// vy = 0
-				gravity = 0;
+				vy = 0;
 				System.out.println(maxJump + "vertical max jump, stand still");
 			}
 		} else {
@@ -172,7 +169,7 @@ public class PlatformController implements Controller {
 			// through stuff)\
 			// if in the "air" should enact gravity so character falls
 			// vy += gravity;
-			gravity += 0.03;
+			vy += gravity ;
 			System.out.println(maxJump + "vertical max jump, goin down");
 		}
 
@@ -182,10 +179,10 @@ public class PlatformController implements Controller {
 		// Move the object in the desired manner
 		// creating maxspeed of character when going left, right, or not moving
 		// vx = horizontal;
-		horizontal = 2;
+		vx=horizontal*maxSpeed;
 		System.out.println(horizontal + "horizontal velocity");
 
-		target.setLocation(target.getX() + velocity.getX(), target.getY() + velocity.getY());
+		target.setLocation(target.getX() + vx, target.getY() + vy);
 	}
 
 	/**
