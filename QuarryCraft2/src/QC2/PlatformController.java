@@ -7,6 +7,7 @@ import java.util.Set;
 import jgame.Context;
 import jgame.GObject;
 import jgame.controller.Controller;
+import jgame.listener.ParentBoundsListener;
 
 /**
  * A controller that controls an objects location based on keyboard input
@@ -100,14 +101,21 @@ public class PlatformController implements Controller {
 			throw new IllegalArgumentException(
 					"This PlatformController already belongs to " + object);
 		}
-
-		// Get a list of all keys pressed.
+//		ParentBoundsListener bounce = new ParentBoundsListener() {
+//
+//			@Override
+//			public void invoke(GObject target, Context context) {
+//				target.
+//			
+//				
+//			}};
+//	bounce.setValidateHorizontal(false);
+//	addListener(bounce);
 		Set<Integer> keys = context.getKeyCodesPressed();
 
 		int horizontal = 0;
 		boolean jump = false;
 
-		// Check each key.
 		for (int key : keys) {
 			if (key == controlScheme.lt) {
 				horizontal += 1;
@@ -118,14 +126,6 @@ public class PlatformController implements Controller {
 			}
 		}
 
-		// TODO insert code to check if the target is touching solid ground
-		// hint: check if the target is colliding with any SolidGround object
-		// the method context.getInstancesOfClass will be helpful
-
-		/*
-		 * should compare the character class to the Soil class and get true if
-		 * character is touching soil and false if not touching soil
-		 */
 		boolean onSolidGround = false;
 
 		List<SolidGround> solidGrounds = context
@@ -143,49 +143,33 @@ public class PlatformController implements Controller {
 
 		if (onSolidGround) {
 			if (jump) {
-				// TODO set the vertical velocity to the jumping speed, upward
-				// sets vertical velocity
+
 				vy = maxJump;
-				System.out.println(gravity + "vertical  jump");
 
 			} else {
-				// TODO stop vertical movement
-				// if it is not moving then vertical velocity = 0
-				// vy = 0
+
 				vy = 0;
-				System.out.println(maxJump + "vertical max jump, stand still");
 			}
 		} else {
-			// TODO increase the downward vertical velocity by "gravity"
-			// limit velocity to the height of the object (to avoid passing
-			// through stuff)\
-			// if in the "air" should enact gravity so character falls
-			// vy += gravity;
 			vy += gravity;
-
-			// or: vy = Math.min(vy, target.getHeight());
-			if (vy > target.getHeight()) { 
+			if (vy > target.getHeight()) {
 				vy = target.getHeight();
 			}
-			/* or:
-			if (vy + gravity < target.getHeight()) {
-				vy += gravity;
-			}*/
-			
-			System.out.println(maxJump + "vertical max jump, goin down");
+
+			/*
+			 * if (vy + gravity < target.getHeight()) { vy += gravity; }
+			 */
+
+			// vy = Math.min(vy, target.getHeight());
+			// vy += gravity;
 		}
-
-		// TODO set the horizontal velocity to the desired velocity
-		// remember that "horizontal" is -1/0/1 for left/stop/right
-		// and that maxSpeed contains the horizontal speed
-		// Move the object in the desired manner
-		// creating maxspeed of character when going left, right, or not moving
-		// vx = horizontal;
 		vx = horizontal * maxSpeed;
-		System.out.println(horizontal + "horizontal velocity");
-
+		
+		
+		
 		target.setLocation(target.getX() + vx, target.getY() + vy);
 	}
+	
 
 	/**
 	 * Gets the current maximum jump.

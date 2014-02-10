@@ -10,6 +10,7 @@ import jgame.ImageCache;
 import jgame.controller.ControlScheme;
 import jgame.controller.KeyboardLocationController;
 import jgame.listener.HitTestListener;
+import jgame.listener.ParentBoundsListener;
 import QC2.PlatformController;
 import QC2.PlatformControlScheme;
 import QC2.SolidGround;
@@ -19,20 +20,9 @@ public class Character extends GSprite {
 		super(ImageCache.forClass(QCraft2.class).get("qc2_soiltop.png"));
 
 		PlatformController klc = new PlatformController(
-				PlatformControlScheme.WASD, -10, -10, 3);
+				PlatformControlScheme.WASD, -10, -20, 3);
 		addController(klc);
-
-		
-		 /* HitTestListener htl = new HitTestListener(Soil.class) {
-		  
-		 @Override public void invoke(GObject target, Context context) {
-		  List<Soil> ground = context.hitTestClass(Soil.class); for(Soil Ee :
-		  ground) Ee.onSolidGround(true);
-		  
-		  
-		 } }; addListener(htl);*/
 		 
-
+		
 	}
-
 }
