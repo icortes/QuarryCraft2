@@ -5,7 +5,7 @@ import java.util.List;
 import quarry.PlatformControlScheme;
 import quarry.PlatformController;
 import quarry.SolidGround;
-import soil.Soil;
+import soil.Land;
 import jgame.Context;
 import jgame.GObject;
 import jgame.GSprite;

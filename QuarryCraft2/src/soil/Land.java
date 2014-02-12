@@ -9,8 +9,8 @@ import jgame.Context;
 import jgame.GObject;
 import jgame.GSprite;
 
-public class Soil extends GSprite implements SolidGround {
-	public Soil(Image image) {
+public class Land extends GSprite implements SolidGround {
+	public Land(Image image) {
 		super(image);
 		
 		LocalClickListener gcl = new LocalClickListener(){

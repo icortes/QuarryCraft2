@@ -1,7 +1,7 @@
 package quarry;
 
 import quarry.Character;
-import soil.Soil;
+import soil.Land;
 import soil.SoilBlock1;
 import soil.SoilBlock2;
 import soil.TopSoil1;
@@ -49,7 +49,7 @@ public class GameView extends GContainer {
 		for (int l = 375; l <= 600; l += 50) {
 			for (int i = 1025; i >= 0; i -= 50) {
 				int blockPick = (int) (Math.random() * 2);
-				Soil e = null;
+				Land e = null;
 				switch (blockPick) {
 				case 0:
 					e = new SoilBlock1();
