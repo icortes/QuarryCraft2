@@ -9,6 +9,7 @@ import jgame.Game;
 import jgame.ImageCache;
 
 public class QCraft2 extends Game {
+
 	public enum View {
 		GAMEMAIN, GAME, OPTIONS, GAME_OVER;
 

@@ -7,13 +7,10 @@ import soil.SoilBlock2;
 import soil.TopSoil1;
 import soil.TopSoil2;
 import soil.bedRock;
-import soil.nothing;
-import jgame.Context;
 import jgame.GContainer;
 import jgame.GObject;
 import jgame.GSprite;
 import jgame.ImageCache;
-import jgame.listener.GlobalClickListener;
 
 public class GameView extends GContainer {
 	public GameView() {
