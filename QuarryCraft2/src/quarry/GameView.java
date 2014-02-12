@@ -24,7 +24,7 @@ public class GameView extends GContainer {
 		bedRock unbreakable = new bedRock();
 		add(unbreakable);
 		unbreakable.setLocation(500, 600);
-
+		GObject[][] topEarth = new Land[1100][600];
 		for (int z = 1025; z >= 0; z -= 50) {
 			int blockPickTop = (int) (Math.random() * 3);
 			GObject t = null;
@@ -41,15 +41,15 @@ public class GameView extends GContainer {
 				break;
 
 			}
-
+			topEarth [z][375] = t;
 			addAt(t, z, 325);
 			
 		}
-
+		GObject[][] belowEarth = new Land[1100][600];
 		for (int l = 375; l <= 600; l += 50) {
 			for (int i = 1025; i >= 0; i -= 50) {
 				int blockPick = (int) (Math.random() * 2);
-				Land e = null;
+				GObject e = null;
 				switch (blockPick) {
 				case 0:
 					e = new SoilBlock1();
@@ -60,7 +60,7 @@ public class GameView extends GContainer {
 					break;
 
 				}
-
+				belowEarth [i][l] = e;
 				addAt(e, i, l);
 				
 				
