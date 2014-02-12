@@ -142,7 +142,7 @@ public class PlatformController implements Controller {
 				onLiquidGround = true;
 				break;
 			}
-
+				
 		}
 		if (onLiquidGround){
 			if (jump){
