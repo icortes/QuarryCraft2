@@ -1,7 +1,8 @@
 package quarry;
 
+import enemy.Enemies;
+import enemy.EnemyOne;
 import java.util.List;
-
 import quarry.Character;
 import soil.Land;
 import soil.SoilBlock1;
@@ -14,6 +15,8 @@ import jgame.GContainer;
 import jgame.GObject;
 import jgame.GSprite;
 import jgame.ImageCache;
+import jgame.listener.LocalClickListener;
+import jgame.listener.TimerListener;
 
 public class GameView extends GContainer {
 	public GameView() {
@@ -22,7 +25,16 @@ public class GameView extends GContainer {
 		bg1.setAnchorCenter();
 		addAtCenter(bg1);
 
-		
+		LocalClickListener lcl = new LocalClickListener(){
+			Enemies e = new EnemyOne();
+			//e = new EnemyOne();
+			@Override
+			public void invoke(GObject target, Context context) {
+				addAt(e,900,600);
+			}
+			 
+		 };
+			addListener(lcl);
 		
 		bedRock unbreakable = new bedRock();
 		add(unbreakable);
@@ -73,12 +85,42 @@ public class GameView extends GContainer {
 		Character hero = new Character();
 		add(hero);
 		hero.setLocation(500, 200);
+		
+//		final TimerListener enemyTimer = new TimerListener(60) {
+//
+//			@Override
+//			public void invoke(GObject target, Context context) {
+//				addRandomEnemy();
+//			}
+//		};
+//
+//		addListener(enemyTimer);
+		
 
 	}
-	public void waterSpread(Context context){
+	private void addRandomEnemy() {
 		
-		List<LiquidGround> liquidGrounds = context.getInstancesOfClass(LiquidGround.class);
+		int enemyPick = (int) (Math.random() * 1);
 
-		
+		Enemies e = null;
+		switch (enemyPick) {
+		case 0:
+			e = new EnemyOne();
+			break;
+		default:
+			e = new EnemyOne();
+			break;
+		}
+
+		this.add(e);
 	}
+//	public void waterSpread(Context context){
+//		
+//		List<LiquidGround> liquidGrounds = context.getInstancesOfClass(LiquidGround.class);
+//		if (liquidGrounds != ){
+//			addAt(waterBlock, i, l);
+//		}
+//
+//		
+//	}
 }

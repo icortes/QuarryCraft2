@@ -12,17 +12,12 @@ import jgame.GSprite;
 public class Land extends GSprite implements SolidGround {
 	public Land(Image image) {
 		super(image);
-		
-		LocalClickListener gcl = new LocalClickListener(){
-
+		LocalClickListener lcl = new LocalClickListener(){
 			@Override
 			public void invoke(GObject target, Context context) {
-				target.removeSelf();
+				target.removeSelf();	
 			}
-			 
 		 };
-			addListener(gcl);
-
+			addListener(lcl);
 	}
-
 }
