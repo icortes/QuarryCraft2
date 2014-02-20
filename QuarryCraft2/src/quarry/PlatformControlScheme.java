@@ -20,7 +20,7 @@ public final class PlatformControlScheme {
 	 * The control scheme using the A and D keys, and space for jump.
 	 */
 	public static PlatformControlScheme WASD = new PlatformControlScheme(
-			KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_SPACE);
+			KeyEvent.VK_A, KeyEvent.VK_D, KeyEvent.VK_W);
 
 	/**
 	 * The key code for leftward movement.

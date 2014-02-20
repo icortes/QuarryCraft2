@@ -136,8 +136,8 @@ public class PlatformController implements Controller {
 
 		for (LiquidGround liquidGround : liquidGrounds) {
 
-			GObject groundObject = (GObject) liquidGround;
-			if (target.hitTest(groundObject)) {
+			GObject groundObjects = (GObject) liquidGround;
+			if (target.hitTest(groundObjects)) {
 				onLiquidGround = true;
 				break;
 			}

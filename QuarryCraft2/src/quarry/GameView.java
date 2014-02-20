@@ -46,7 +46,7 @@ public class GameView extends GContainer {
 			case 1:
 				t = new TopSoil2();
 				break;
-			case 2:
+			case 2:			
 				t = new waterBlock();
 				break;
 
