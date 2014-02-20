@@ -17,15 +17,16 @@ import jgame.listener.ParentBoundsListener;
  * @author William Chargin
  * 
  */
-public class PlatformController implements Controller {
+public class EnemyPlatformControler implements Controller {
 	/**
 	 * The default gravitational acceleration, in px/frame<sup>2</sup>.
 	 */
 	public static final double DEFAULT_GRAVITY = 1;
+
 	/**
 	 * The control scheme for this platform controller.
 	 */
-	private final PlatformControlScheme controlScheme;
+	private final EnemyPlatformControlScheme controlScheme;
 
 	/**
 	 * The object to be controlled by this platform controller.
@@ -63,7 +64,7 @@ public class PlatformController implements Controller {
 	 * @param maxJump
 	 *            the maximum jump speed (in px/frame)
 	 */
-	public PlatformController(PlatformControlScheme controlScheme,
+	public EnemyPlatformControler(EnemyPlatformControlScheme controlScheme,
 			double maxSpeed, double maxJump) {
 		this(controlScheme, maxSpeed, maxJump, DEFAULT_GRAVITY); // ++++++++++++++
 																	// ??????????????????????????????
@@ -81,7 +82,7 @@ public class PlatformController implements Controller {
 	 * @param gravity
 	 *            the gravitation acceleration (in px/frame<sup>2</sup>)
 	 */
-	public PlatformController(PlatformControlScheme controlScheme,
+	public EnemyPlatformControler(EnemyPlatformControlScheme controlScheme,
 			double maxSpeed, double maxJump, double gravity) {
 		super();
 		this.controlScheme = controlScheme;
@@ -147,7 +148,7 @@ public class PlatformController implements Controller {
 			if (jump){
 				vy += -.5;
 			}else{
-				vy = 1;
+				vy = -.5;
 			}
 		}
 
@@ -158,7 +159,7 @@ public class PlatformController implements Controller {
 
 			} else {
 
-				vy = 0;
+				vy = maxJump;
 			}
 		} else {
 			vy += gravity;
@@ -173,7 +174,7 @@ public class PlatformController implements Controller {
 			// vy = Math.min(vy, target.getHeight());
 			// vy += gravity;
 		}
-		vx = horizontal * maxSpeed;
+		vx = maxSpeed;
 		
 		
 		
@@ -217,7 +218,8 @@ public class PlatformController implements Controller {
 	 */
 	public void setMaxSpeed(double maxSpeed) {
 		if (maxSpeed < 0) {
-			throw new IllegalArgumentException("maxSpeed must be nonnegative: "	+ maxSpeed);
+			throw new IllegalArgumentException("maxSpeed must be nonnegative: "
+					+ maxSpeed);
 		}
 		this.maxSpeed = maxSpeed;
 	}

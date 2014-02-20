@@ -1,7 +1,10 @@
 package quarry;
+
+import enemy.Enemies;
+import enemy.EnemyOne;
 import java.util.List;
 import quarry.Character;
-import quarry.QCraft2.View;
+import soil.Land;
 import soil.SoilBlock1;
 import soil.SoilBlock2;
 import soil.TopSoil1;
@@ -12,10 +15,11 @@ import jgame.GContainer;
 import jgame.GObject;
 import jgame.GSprite;
 import jgame.ImageCache;
-import jgame.listener.ParentBoundsListener;
+import jgame.listener.LocalClickListener;
+import jgame.listener.TimerListener;
 
-public class GameView extends GContainer {
-	public GameView() {
+public class GameViewAndEnemies extends GContainer {
+	public GameViewAndEnemies() {
 		setSize(1000, 600);
 		GSprite bg1 = ImageCache.getSprite("tempBack.png");
 		bg1.setAnchorCenter();
@@ -24,16 +28,6 @@ public class GameView extends GContainer {
 		bedRock unbreakable = new bedRock();
 		add(unbreakable);
 		unbreakable.setLocation(500, 600);
-
-		ParentBoundsListener PBL = new ParentBoundsListener(){
-		@Override
-		public void invoke(GObject target, Context context) {
-			List<Character> enemies = context.hitTestClass(Character.class);
-			for (Character e : enemies)
-				context.setCurrentGameView(View.GAMEANDENEMIES);
-		}
-	};
-	addListener(PBL);
 
 		for (int z = 1025; z >= 0; z -= 50) {
 			int blockPickTop = (int) (Math.random() * 3);
@@ -79,15 +73,41 @@ public class GameView extends GContainer {
 		add(hero);
 		hero.setLocation(500, 200);
 
+		final TimerListener enemyTimer = new TimerListener(500) {
+
+			@Override
+			public void invoke(GObject target, Context context) {
+				addRandomEnemy();
+			}
+		};
+
+		addListener(enemyTimer);
+
 	}
+
+	private void addRandomEnemy() {
+
+		int enemyPick = (int) (Math.random() * 1);
+
+		Enemies e = null;
+		switch (enemyPick) {
+		case 0:
+			e = new EnemyOne();
+			break;
+		default:
+			e = new EnemyOne();
+			break;
+		}
+
+		this.addAt(e, 990, 200);
+	}
+	// public void waterSpread(Context context){
+	//
+	// List<LiquidGround> liquidGrounds = context.getInstancesOfClass(LiquidGround.class);
+	// if (liquidGrounds != ){
+	// addAt(waterBlock, i, l);
+	// }
+	//
+	//
+	// }
 }
-// public void waterSpread(Context context){
-//
-// List<LiquidGround> liquidGrounds =
-// context.getInstancesOfClass(LiquidGround.class);
-// if (liquidGrounds != ){
-// addAt(waterBlock, i, l);
-// }
-//
-//
-// }

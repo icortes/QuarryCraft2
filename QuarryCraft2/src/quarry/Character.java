@@ -2,16 +2,15 @@ package quarry;
 
 import java.util.List;
 
+import enemy.Enemies;
 import quarry.PlatformControlScheme;
 import quarry.PlatformController;
-import quarry.SolidGround;
-import soil.Land;
+import quarry.QCraft2.View;
 import jgame.Context;
 import jgame.GObject;
 import jgame.GSprite;
 import jgame.ImageCache;
-import jgame.controller.ControlScheme;
-import jgame.controller.KeyboardLocationController;
+import jgame.listener.BoundaryRemovalListener;
 import jgame.listener.HitTestListener;
 import jgame.listener.ParentBoundsListener;
 
@@ -22,7 +21,18 @@ public class Character extends GSprite {
 		PlatformController klc = new PlatformController(
 				PlatformControlScheme.WASD, -10, -20, 3);
 		addController(klc);
-		 
-		
+
+		HitTestListener htl = new HitTestListener(Enemies.class) {
+
+			@Override
+			public void invoke(GObject target, Context context) {
+				List<Enemies> enemies = context.hitTestClass(Enemies.class);
+				for (Enemies e : enemies)
+					target.removeSelf();
+			}
+		};
+		addListener(htl);
+
 	}
+
 }

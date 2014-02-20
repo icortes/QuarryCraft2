@@ -11,7 +11,7 @@ import jgame.ImageCache;
 public class QCraft2 extends Game {
 
 	public enum View {
-		GAMEMAIN, GAME, OPTIONS, GAME_OVER;
+		GAMEMAIN, GAME, OPTIONS, GAME_OVER, GAMEANDENEMIES;
 
 	}
 	public static void main(String[] args) {
@@ -29,5 +29,8 @@ public class QCraft2 extends Game {
 		
 		GameView game = new GameView();
 		root.addView(View.GAME, game);
+		
+		GameViewAndEnemies gameAndEnemies = new GameViewAndEnemies();
+		root.addView(View.GAMEANDENEMIES, gameAndEnemies);
 	}
 }
