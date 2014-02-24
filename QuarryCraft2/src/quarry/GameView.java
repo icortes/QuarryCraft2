@@ -24,6 +24,10 @@ public class GameView extends GContainer {
 		bedRock unbreakable = new bedRock();
 		add(unbreakable);
 		unbreakable.setLocation(500, 600);
+		
+		NextSlide next = new NextSlide();
+		add(next);
+		next.setLocation(300, 595);
 
 		ParentBoundsListener PBL = new ParentBoundsListener(){
 		@Override

@@ -1,0 +1,65 @@
+package quarry;
+
+import quarry.QCraft2.View;
+import jgame.ButtonState;
+import jgame.Context;
+import jgame.GButton;
+import jgame.GContainer;
+import jgame.GSprite;
+import jgame.ImageCache;
+import jgame.listener.ButtonListener;
+
+public class NextSlideAcceptance extends GContainer{
+public  NextSlideAcceptance(){
+	
+	setSize(1000, 600);
+	GSprite bg1 = ImageCache.getSprite("next.png");
+	bg1.setAnchorCenter();
+	addAtCenter(bg1);
+	
+	
+	GButton play = new GButton();
+	GSprite buttonImageOne = new GSprite(ImageCache.forClass(QCraft2.class)
+			.get("qc2_soilrocks1.png"));
+	GSprite hoveredImageOne = new GSprite(ImageCache
+			.forClass(QCraft2.class).get("qc2_soilrocks2.png"));
+	GSprite pressedImageOne = new GSprite(ImageCache
+			.forClass(QCraft2.class).get("qc2_soiltop.png"));
+	play.setStateSprite(ButtonState.NONE, buttonImageOne);
+	play.setStateSprite(ButtonState.HOVERED, hoveredImageOne);
+	play.setStateSprite(ButtonState.PRESSED, pressedImageOne);
+	addAt(play, 1000 / 2, (200));
+
+	ButtonListener playNow = new ButtonListener() {
+		@Override
+		public void mouseClicked(Context context) {
+
+			context.setCurrentGameView(View.GAME);
+		}
+	};
+	play.addListener(playNow);
+	
+	
+	GButton playy = new GButton();
+	GSprite buttonImageOnee = new GSprite(ImageCache.forClass(QCraft2.class)
+			.get("qc2_soilrocks1.png"));
+	GSprite hoveredImageOnee = new GSprite(ImageCache
+			.forClass(QCraft2.class).get("qc2_soilrocks2.png"));
+	GSprite pressedImageOnee = new GSprite(ImageCache
+			.forClass(QCraft2.class).get("qc2_soiltop.png"));
+	playy.setStateSprite(ButtonState.NONE, buttonImageOnee);
+	playy.setStateSprite(ButtonState.HOVERED, hoveredImageOnee);
+	playy.setStateSprite(ButtonState.PRESSED, pressedImageOnee);
+	addAt(playy, (1000 / 2), 400);
+
+	ButtonListener playNoww = new ButtonListener() {
+		@Override
+		public void mouseClicked(Context context) {
+
+			context.setCurrentGameView(View.GAMEANDENEMIES);
+		}
+	};
+	play.addListener(playNoww);
+	
+}
+}
