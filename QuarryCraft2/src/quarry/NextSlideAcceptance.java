@@ -20,11 +20,11 @@ public  NextSlideAcceptance(){
 	
 	GButton play = new GButton();
 	GSprite buttonImageOne = new GSprite(ImageCache.forClass(QCraft2.class)
-			.get("qc2_soilrocks1.png"));
+			.get("Accept.png"));
 	GSprite hoveredImageOne = new GSprite(ImageCache
-			.forClass(QCraft2.class).get("qc2_soilrocks2.png"));
+			.forClass(QCraft2.class).get("Accept.png"));
 	GSprite pressedImageOne = new GSprite(ImageCache
-			.forClass(QCraft2.class).get("qc2_soiltop.png"));
+			.forClass(QCraft2.class).get("Accept.png"));
 	play.setStateSprite(ButtonState.NONE, buttonImageOne);
 	play.setStateSprite(ButtonState.HOVERED, hoveredImageOne);
 	play.setStateSprite(ButtonState.PRESSED, pressedImageOne);
@@ -42,11 +42,11 @@ public  NextSlideAcceptance(){
 	
 	GButton playy = new GButton();
 	GSprite buttonImageOnee = new GSprite(ImageCache.forClass(QCraft2.class)
-			.get("qc2_soilrocks1.png"));
+			.get("Decline.png"));
 	GSprite hoveredImageOnee = new GSprite(ImageCache
-			.forClass(QCraft2.class).get("qc2_soilrocks2.png"));
+			.forClass(QCraft2.class).get("Decline.png"));
 	GSprite pressedImageOnee = new GSprite(ImageCache
-			.forClass(QCraft2.class).get("qc2_soiltop.png"));
+			.forClass(QCraft2.class).get("Decline.png"));
 	playy.setStateSprite(ButtonState.NONE, buttonImageOnee);
 	playy.setStateSprite(ButtonState.HOVERED, hoveredImageOnee);
 	playy.setStateSprite(ButtonState.PRESSED, pressedImageOnee);
