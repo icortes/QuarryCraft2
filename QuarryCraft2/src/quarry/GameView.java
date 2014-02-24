@@ -27,7 +27,7 @@ public class GameView extends GContainer {
 		
 		NextSlide next = new NextSlide();
 		add(next);
-		next.setLocation(300, 595);
+		next.setLocation(995, 300);
 
 		ParentBoundsListener PBL = new ParentBoundsListener(){
 		@Override

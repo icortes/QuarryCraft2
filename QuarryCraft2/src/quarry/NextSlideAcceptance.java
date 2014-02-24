@@ -28,13 +28,13 @@ public  NextSlideAcceptance(){
 	play.setStateSprite(ButtonState.NONE, buttonImageOne);
 	play.setStateSprite(ButtonState.HOVERED, hoveredImageOne);
 	play.setStateSprite(ButtonState.PRESSED, pressedImageOne);
-	addAt(play, 1000 / 2, (200));
+	addAt(play, 400, (200));
 
 	ButtonListener playNow = new ButtonListener() {
 		@Override
 		public void mouseClicked(Context context) {
 
-			context.setCurrentGameView(View.GAME);
+			context.setCurrentGameView(View.GAMEANDENEMIES);
 		}
 	};
 	play.addListener(playNow);
@@ -50,13 +50,13 @@ public  NextSlideAcceptance(){
 	playy.setStateSprite(ButtonState.NONE, buttonImageOnee);
 	playy.setStateSprite(ButtonState.HOVERED, hoveredImageOnee);
 	playy.setStateSprite(ButtonState.PRESSED, pressedImageOnee);
-	addAt(playy, (1000 / 2), 400);
+	addAt(playy, (400), 400);
 
 	ButtonListener playNoww = new ButtonListener() {
 		@Override
 		public void mouseClicked(Context context) {
 
-			context.setCurrentGameView(View.GAMEANDENEMIES);
+			context.setCurrentGameView(View.GAME);
 		}
 	};
 	play.addListener(playNoww);
