@@ -64,7 +64,7 @@ public class GameViewAndEnemies extends GContainer {
 
 				}
 
-				addAt(e, i, l);
+				addAt(e, i, l);	
 
 			}
 

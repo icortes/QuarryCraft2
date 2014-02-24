@@ -34,7 +34,7 @@ public  NextSlideAcceptance(){
 		@Override
 		public void mouseClicked(Context context) {
 
-			context.setCurrentGameView(View.GAMEANDENEMIES);
+			context.setCurrentGameView(View.GAME);
 		}
 	};
 	play.addListener(playNow);
@@ -52,14 +52,14 @@ public  NextSlideAcceptance(){
 	playy.setStateSprite(ButtonState.PRESSED, pressedImageOnee);
 	addAt(playy, (400), 400);
 
-	ButtonListener playNoww = new ButtonListener() {
+	ButtonListener playyNoww = new ButtonListener() {
 		@Override
 		public void mouseClicked(Context context) {
 
-			context.setCurrentGameView(View.GAME);
+			context.setCurrentGameView(View.GAMEANDENEMIES);
 		}
 	};
-	play.addListener(playNoww);
+	playy.addListener(playyNoww);
 	
 }
 }
