@@ -21,7 +21,7 @@ import jgame.listener.LocalClickListener;
 import jgame.listener.TimerListener;
 
 public class GameViewAndEnemies extends GContainer {
-	public static boolean newTerrain = false;
+	public static int newTerrain = 1;
 	public GameViewAndEnemies() {
 		setSize(1000, 600);
 		GSprite bg1 = ImageCache.getSprite("tempBack.png");
@@ -35,16 +35,20 @@ public class GameViewAndEnemies extends GContainer {
 		NextSlideTwo next = new NextSlideTwo();
 		add(next);
 		next.setLocation(995, 300);
-		if (newTerrain = false){
+		if (newTerrain <= 1){
 			RandomTerrain();
 			try {
 			    Thread.sleep(4000);
-			    newTerrain = true;
+			    newTerrain = newTerrain++;
 			} catch(InterruptedException ex) {
 			    Thread.currentThread().interrupt();
 			}
 			
-		}
+		}else if(newTerrain>=3){
+			deleteTerrain(null);
+			newTerrain=1;
+			}
+			
 		Character hero = new Character();
 		add(hero);
 		hero.setLocation(500, 200);
@@ -78,6 +82,25 @@ public class GameViewAndEnemies extends GContainer {
 		}
 
 		this.addAt(e, 900, 200);
+	}
+	
+	public void deleteTerrain(Context context){
+		List<SolidGround> solidGrounds = context
+				.getInstancesOfClass(SolidGround.class);
+		for (SolidGround solidGround : solidGrounds) {
+
+			GObject groundObject = (GObject) solidGround;
+			groundObject.removeSelf();
+		}
+		
+		List<LiquidGround> liquidGrounds = context
+				.getInstancesOfClass(LiquidGround.class);
+		for (LiquidGround liquidGround : liquidGrounds) {
+
+			GObject liquidObject = (GObject) liquidGround;
+			liquidObject.removeSelf();
+		}
+		
 	}
 	public void RandomTerrain(){
 		for (int z = 1025; z >= 0; z -= 50) {
