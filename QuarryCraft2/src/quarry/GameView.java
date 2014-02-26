@@ -29,15 +29,6 @@ public class GameView extends GContainer {
 		add(next);
 		next.setLocation(995, 300);
 
-		ParentBoundsListener PBL = new ParentBoundsListener(){
-		@Override
-		public void invoke(GObject target, Context context) {
-			List<Character> enemies = context.hitTestClass(Character.class);
-			for (Character e : enemies)
-				context.setCurrentGameView(View.GAMEANDENEMIES);
-		}
-	};
-	addListener(PBL);
 
 		for (int z = 1025; z >= 0; z -= 50) {
 			int blockPickTop = (int) (Math.random() * 3);

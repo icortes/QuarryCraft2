@@ -35,6 +35,7 @@ public class Character extends GSprite {
 		addAtCenter(hb);
 		hb.setY(this.getHeight() - hb.getHeight() / 2);
 		hb.setHealthPercentage(1);
+		
 		double slowness = getSlowness();
 
 		HitTestListener htl = new HitTestListener(Enemies.class) {
@@ -43,7 +44,8 @@ public class Character extends GSprite {
 			public void invoke(GObject target, Context context) {
 				List<Enemies> enemies = context.hitTestClass(Enemies.class);
 				for (Enemies e : enemies)
-					target.removeSelf();
+				
+					e.removeSelf();
 			}
 		};
 		addListener(htl);

@@ -1,16 +1,19 @@
 package quarry;
+import java.util.List;
 
+import quarry.GameViewAndEnemies;
 import quarry.QCraft2.View;
 import jgame.ButtonState;
 import jgame.Context;
 import jgame.GButton;
 import jgame.GContainer;
+import jgame.GObject;
 import jgame.GSprite;
 import jgame.ImageCache;
 import jgame.listener.ButtonListener;
 
-public class NextSlideAcceptance extends GContainer{
-public  NextSlideAcceptance(){
+public class NextSlideAcceptanceTwo extends GContainer{
+public  NextSlideAcceptanceTwo(){
 	
 	setSize(1000, 600);
 	GSprite bg1 = ImageCache.getSprite("next.png");
@@ -31,10 +34,16 @@ public  NextSlideAcceptance(){
 	addAt(play, 400, (200));
 
 	ButtonListener playNow = new ButtonListener() {
-		@Override
 		public void mouseClicked(Context context) {
 
 			context.setCurrentGameView(View.GAMEANDENEMIES);
+			List<SolidGround> solidGrounds = context.getInstancesOfClass(SolidGround.class);
+			for (SolidGround solidGround : solidGrounds) {
+				
+				GObject groundObject = (GObject) solidGround;
+				groundObject.removeSelf();
+			}
+			GameViewAndEnemies.newTerrain = false;
 		}
 	};
 	play.addListener(playNow);
@@ -56,7 +65,7 @@ public  NextSlideAcceptance(){
 		@Override
 		public void mouseClicked(Context context) {
 
-			context.setCurrentGameView(View.GAME);
+			context.setCurrentGameView(View.GAMEANDENEMIES);
 		}
 	};
 	playy.addListener(playyNoww);

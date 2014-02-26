@@ -2,7 +2,9 @@ package quarry;
 
 import enemy.Enemies;
 import enemy.EnemyOne;
+
 import java.util.List;
+
 import quarry.Character;
 import soil.Land;
 import soil.SoilBlock1;
@@ -19,6 +21,7 @@ import jgame.listener.LocalClickListener;
 import jgame.listener.TimerListener;
 
 public class GameViewAndEnemies extends GContainer {
+	public static boolean newTerrain = false;
 	public GameViewAndEnemies() {
 		setSize(1000, 600);
 		GSprite bg1 = ImageCache.getSprite("tempBack.png");
@@ -28,7 +31,55 @@ public class GameViewAndEnemies extends GContainer {
 		bedRock unbreakable = new bedRock();
 		add(unbreakable);
 		unbreakable.setLocation(500, 600);
+		
+		NextSlideTwo next = new NextSlideTwo();
+		add(next);
+		next.setLocation(995, 300);
+		if (newTerrain = false){
+			RandomTerrain();
+			try {
+			    Thread.sleep(4000);
+			    newTerrain = true;
+			} catch(InterruptedException ex) {
+			    Thread.currentThread().interrupt();
+			}
+			
+		}
+		Character hero = new Character();
+		add(hero);
+		hero.setLocation(500, 200);
 
+		final TimerListener enemyTimer = new TimerListener(500) {
+
+			@Override
+			public void invoke(GObject target, Context context) {
+				addRandomEnemy();
+				
+				
+			}
+		};
+
+		addListener(enemyTimer);
+
+	}
+	
+	private void addRandomEnemy() {
+
+		int enemyPick = (int) (Math.random() * 1);
+
+		Enemies e = null;
+		switch (enemyPick) {
+		case 0:
+			e = new EnemyOne();
+			break;
+		default:
+			e = new EnemyOne();
+			break;
+		}
+
+		this.addAt(e, 900, 200);
+	}
+	public void RandomTerrain(){
 		for (int z = 1025; z >= 0; z -= 50) {
 			int blockPickTop = (int) (Math.random() * 3);
 			GObject t = null;
@@ -67,47 +118,6 @@ public class GameViewAndEnemies extends GContainer {
 				addAt(e, i, l);	
 
 			}
-
-		}
-		Character hero = new Character();
-		add(hero);
-		hero.setLocation(500, 200);
-
-		final TimerListener enemyTimer = new TimerListener(500) {
-
-			@Override
-			public void invoke(GObject target, Context context) {
-				addRandomEnemy();
-			}
-		};
-
-		addListener(enemyTimer);
-
 	}
-
-	private void addRandomEnemy() {
-
-		int enemyPick = (int) (Math.random() * 1);
-
-		Enemies e = null;
-		switch (enemyPick) {
-		case 0:
-			e = new EnemyOne();
-			break;
-		default:
-			e = new EnemyOne();
-			break;
-		}
-
-		this.addAt(e, 990, 200);
-	}
-	// public void waterSpread(Context context){
-	//
-	// List<LiquidGround> liquidGrounds = context.getInstancesOfClass(LiquidGround.class);
-	// if (liquidGrounds != ){
-	// addAt(waterBlock, i, l);
-	// }
-	//
-	//
-	// }
+}
 }
