@@ -9,9 +9,11 @@ import jgame.GSprite;
 import jgame.ImageCache;
 import jgame.listener.ButtonListener;
 
-public class NextSlideAcceptance extends GContainer{
-public  NextSlideAcceptance(){
-	
+public class NextSlideAcceptance extends GContainer {
+	private final GameLevel gameLevel;
+
+	public  NextSlideAcceptance(GameLevel game){
+	this.gameLevel = game;
 	setSize(1000, 600);
 	GSprite bg1 = ImageCache.getSprite("next.png");
 	bg1.setAnchorCenter();
@@ -33,7 +35,7 @@ public  NextSlideAcceptance(){
 	ButtonListener playNow = new ButtonListener() {
 		@Override
 		public void mouseClicked(Context context) {
-
+			gameLevel.set
 			context.setCurrentGameView(View.GAMEANDENEMIES);
 		}
 	};
@@ -55,7 +57,6 @@ public  NextSlideAcceptance(){
 	ButtonListener playyNoww = new ButtonListener() {
 		@Override
 		public void mouseClicked(Context context) {
-
 			context.setCurrentGameView(View.GAME);
 		}
 	};

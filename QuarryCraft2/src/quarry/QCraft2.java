@@ -1,4 +1,4 @@
-package quarry;	
+package quarry;
 
 import java.awt.Color;
 
@@ -14,6 +14,7 @@ public class QCraft2 extends Game {
 		GAMEMAIN, GAME, OPTIONS, GAME_OVER, GAMEANDENEMIES, NEXTSLIDE;
 
 	}
+
 	public static void main(String[] args) {
 		ImageCache.create(QCraft2.class, "/QC2/rsc/");
 		QCraft2 craftyness = new QCraft2();
@@ -26,14 +27,14 @@ public class QCraft2 extends Game {
 
 		GameViewMain gameViewMain = new GameViewMain();
 		root.addView(View.GAMEMAIN, gameViewMain);
-		
-		GameView game = new GameView();
+
+		GameLevel game = new GameLevel();
 		root.addView(View.GAME, game);
-		
-		GameViewAndEnemies gameAndEnemies = new GameViewAndEnemies();
-		root.addView(View.GAMEANDENEMIES, gameAndEnemies);
-		
-		NextSlideAcceptance next = new NextSlideAcceptance();
+		//
+		// GameViewAndEnemies gameAndEnemies = new GameViewAndEnemies();
+		// root.addView(View.GAMEANDENEMIES, gameAndEnemies);
+
+		NextSlideAcceptance next = new NextSlideAcceptance(game);
 		root.addView(View.NEXTSLIDE, next);
 	}
 }

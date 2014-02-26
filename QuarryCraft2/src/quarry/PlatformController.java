@@ -88,7 +88,7 @@ public class PlatformController implements Controller {
 		vx = vy = 0;
 		this.maxSpeed = maxSpeed;
 		this.maxJump = maxJump;
-		this.gravity = gravity; 
+		this.gravity = gravity;
 	}
 
 	@Override
@@ -100,7 +100,7 @@ public class PlatformController implements Controller {
 			throw new IllegalArgumentException(
 					"This PlatformController already belongs to " + object);
 		}
-		
+
 		Set<Integer> keys = context.getKeyCodesPressed();
 
 		int horizontal = 0;
@@ -127,12 +127,15 @@ public class PlatformController implements Controller {
 			GObject groundObject = (GObject) solidGround;
 			if (target.hitTest(groundObject)) {
 				onSolidGround = true;
+				System.out.println("we are on a "
+						+ groundObject.getClass().getName() + "object");
 				break;
 			}
 
 		}
-		
-		List<LiquidGround> liquidGrounds = context.getInstancesOfClass(LiquidGround.class);
+
+		List<LiquidGround> liquidGrounds = context
+				.getInstancesOfClass(LiquidGround.class);
 
 		for (LiquidGround liquidGround : liquidGrounds) {
 
@@ -141,12 +144,12 @@ public class PlatformController implements Controller {
 				onLiquidGround = true;
 				break;
 			}
-				
+
 		}
-		if (onLiquidGround){
-			if (jump){
+		if (onLiquidGround) {
+			if (jump) {
 				vy += -.5;
-			}else{
+			} else {
 				vy = 1;
 			}
 		}
@@ -174,12 +177,9 @@ public class PlatformController implements Controller {
 			// vy += gravity;
 		}
 		vx = horizontal * maxSpeed;
-		
-		
-		
+
 		target.setLocation(target.getX() + vx, target.getY() + vy);
 	}
-	
 
 	/**
 	 * Gets the current maximum jump.
@@ -217,7 +217,8 @@ public class PlatformController implements Controller {
 	 */
 	public void setMaxSpeed(double maxSpeed) {
 		if (maxSpeed < 0) {
-			throw new IllegalArgumentException("maxSpeed must be nonnegative: "	+ maxSpeed);
+			throw new IllegalArgumentException("maxSpeed must be nonnegative: "
+					+ maxSpeed);
 		}
 		this.maxSpeed = maxSpeed;
 	}

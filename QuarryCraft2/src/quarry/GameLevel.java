@@ -1,4 +1,5 @@
 package quarry;
+
 import java.util.List;
 import quarry.Character;
 import quarry.QCraft2.View;
@@ -6,7 +7,7 @@ import soil.SoilBlock1;
 import soil.SoilBlock2;
 import soil.TopSoil1;
 import soil.TopSoil2;
-import soil.bedRock;
+import soil.BedRock;
 import jgame.Context;
 import jgame.GContainer;
 import jgame.GObject;
@@ -14,23 +15,22 @@ import jgame.GSprite;
 import jgame.ImageCache;
 import jgame.listener.ParentBoundsListener;
 
-public class GameView extends GContainer {
-	public GameView() {
+public class GameLevel extends GContainer {
+	public GameLevel() {
 		setSize(1000, 600);
 		GSprite bg1 = ImageCache.getSprite("tempBack.png");
 		bg1.setAnchorCenter();
 		addAtCenter(bg1);
 
-		bedRock unbreakable = new bedRock();
+		BedRock unbreakable = new BedRock();
 		add(unbreakable);
 		unbreakable.setLocation(500, 600);
-		
+
 		NextSlide next = new NextSlide();
 		add(next);
 		next.setLocation(995, 300);
 
-
-		for (int z = 1025; z >= 0; z -= 50) {
+		for (int horizontal = 1025; horizontal >= 0; horizontal -= 50) {
 			int blockPickTop = (int) (Math.random() * 3);
 			GObject t = null;
 			switch (blockPickTop) {
@@ -41,17 +41,17 @@ public class GameView extends GContainer {
 			case 1:
 				t = new TopSoil2();
 				break;
-			case 2:			
-				t = new waterBlock();
+			case 2:
+				t = new WaterBlock();
 				break;
 
 			}
 
-			addAt(t, z, 325);
+			addAt(t, horizontal, 325);
 
 		}
-		for (int l = 375; l <= 600; l += 50) {
-			for (int i = 1025; i >= 0; i -= 50) {
+		for (int vertical = 375; vertical <= 600; vertical += 50) {
+			for (int horizontal = 1025; horizontal >= 0; horizontal -= 50) {
 				int blockPick = (int) (Math.random() * 2);
 				GObject e = null;
 				switch (blockPick) {
@@ -65,7 +65,7 @@ public class GameView extends GContainer {
 
 				}
 
-				addAt(e, i, l);
+				addAt(e, horizontal, vertical);
 
 			}
 
