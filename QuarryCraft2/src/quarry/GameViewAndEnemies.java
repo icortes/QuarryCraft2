@@ -33,9 +33,7 @@ public class GameViewAndEnemies extends GContainer {
 		add(unbreakable);
 		unbreakable.setLocation(500, 600);
 
-		NextSlideTwo next = new NextSlideTwo();
-		add(next);
-		next.setLocation(995, 300);
+
 		if (newTerrain <= 1) {
 			RandomTerrain();
 			// try {

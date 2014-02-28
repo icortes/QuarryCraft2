@@ -35,7 +35,7 @@ public class NextSlideAcceptance extends GContainer {
 	ButtonListener playNow = new ButtonListener() {
 		@Override
 		public void mouseClicked(Context context) {
-			gameLevel.set
+			gameLevel.setEnemyDelay(300);
 			context.setCurrentGameView(View.GAMEANDENEMIES);
 		}
 	};

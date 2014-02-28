@@ -1,10 +1,14 @@
 package quarry.ex;
 
-import java.util.List;
-
+import jgame.Context;
+import jgame.GContainer;
+import jgame.GObject;
+import jgame.GSprite;
+import jgame.ImageCache;
+import jgame.listener.TimerListener;
 import quarry.Character;
 import quarry.LiquidGround;
-import quarry.NextSlideTwo;
+import quarry.NextSlide;
 import quarry.SolidGround;
 import quarry.WaterBlock;
 import soil.BedRock;
@@ -14,12 +18,6 @@ import soil.TopSoil1;
 import soil.TopSoil2;
 import enemy.Enemies;
 import enemy.EnemyOne;
-import jgame.Context;
-import jgame.GContainer;
-import jgame.GObject;
-import jgame.GSprite;
-import jgame.ImageCache;
-import jgame.listener.TimerListener;
 
 /**
  * The current game level in the QC2 game. This can be configured with variable
@@ -56,7 +54,7 @@ public class GameLevel extends GContainer {
 		hero = new Character();
 		addAt(hero, 500, 200);
 
-		NextSlideTwo next = new NextSlideTwo();
+		NextSlide next = new NextSlide();
 		addAt(next, 995, 300);
 
 		addListener(tlEnemies);
