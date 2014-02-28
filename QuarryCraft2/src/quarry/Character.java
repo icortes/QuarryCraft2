@@ -3,18 +3,16 @@ package quarry;
 import java.awt.Graphics2D;
 import java.util.List;
 
-import enemy.Enemies;
-import quarry.PlatformControlScheme;
-import quarry.PlatformController;
-import quarry.QCraft2.View;
 import jgame.Context;
 import jgame.GObject;
 import jgame.GSprite;
 import jgame.ImageCache;
-import jgame.listener.BoundaryRemovalListener;
+import jgame.controller.Interpolation;
+import jgame.controller.MovementTween;
+import jgame.controller.ScaleTween;
 import jgame.listener.HitTestListener;
-import jgame.listener.ParentBoundsListener;
-import quarry.HP;
+import quarry.QCraft2.View;
+import enemy.Enemies;
 
 public class Character extends GSprite {
 	private double maxHealth;
@@ -23,11 +21,16 @@ public class Character extends GSprite {
 	private GObject object;
 
 	public Character() {
-		super(ImageCache.forClass(QCraft2.class).get("hero.png"));
-
+		
+		super(ImageCache.getSequentialImages("HeroSequence/h", 1, 20,
+				".png"));
 		PlatformController klc = new PlatformController(
 				PlatformControlScheme.WASD, -10, -20, 3);
 		addController(klc);
+	
+		
+		
+
 
 		maxHealth = 1000;
 		currentHealth = maxHealth;
