@@ -34,14 +34,15 @@ public class GameLevel extends GContainer {
 	 * The hero for this game level.
 	 */
 	private final Character hero;
-
-	private final TimerListener tlEnemies = new TimerListener(0) {
+	private final TimerListener tlEnemies = new TimerListener(240) {
 		@Override
 		public void invoke(GObject target, Context context) {
 			addRandomEnemy();
 		}
 	};
 
+	//addListener(tlEnemies);
+	
 	public GameLevel() {
 		setSize(1000, 600);
 		GSprite bg1 = ImageCache.getSprite("tempBack.png");
