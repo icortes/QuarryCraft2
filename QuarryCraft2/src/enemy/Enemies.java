@@ -23,8 +23,8 @@ public abstract class Enemies extends GSprite {
 	private HP hb = new HP();
 	private GObject object;
 
-	public Enemies(Image image, double maxHlth, double bulletDamage) {
-		super(image);
+	public Enemies(List<Image> list, double maxHlth, double bulletDamage) {
+		super(list);
 		maxHealth = maxHlth;
 		currentHealth = maxHealth;
 

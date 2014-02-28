@@ -127,8 +127,6 @@ public class PlatformController implements Controller {
 			GObject groundObject = (GObject) solidGround;
 			if (target.hitTest(groundObject)) {
 				onSolidGround = true;
-				System.out.println("we are on a "
-						+ groundObject.getClass().getName() + "object");
 				break;
 			}
 

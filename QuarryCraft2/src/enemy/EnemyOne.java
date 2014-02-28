@@ -3,7 +3,7 @@ import quarry.QCraft2;
 import jgame.ImageCache;
 public class EnemyOne extends Enemies {
 	public EnemyOne() {
-		super(ImageCache.forClass(QCraft2.class).get("hero.png"), 200, 100);
+		super(ImageCache.getSequentialImages("EnemieSequence/b", 1, 20,".png"), 200, 2);	
 	}
 	@Override
 	public double getSlowness() {
